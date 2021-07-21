@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  eaas_e2e_asyncmock_dev:
+    container_name: eaas_e2e_asyncmock_dev
+    image: cloudblueconnect/connect-extension-runner:23.4
+    command: cextrun -d
+    volumes: 
+      - .:/extension
+    env_file:
+      - .eaas_e2e_asyncmock_dev.env
+
+  eaas_e2e_asyncmock_bash:
+    container_name: eaas_e2e_asyncmock_bash
+    image: cloudblueconnect/connect-extension-runner:23.4
+    working_dir: /extension
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/extension
+    env_file:
+      - .eaas_e2e_asyncmock_dev.env
+
+  eaas_e2e_asyncmock_test:
+    container_name: eaas_e2e_asyncmock_test
+    image: cloudblueconnect/connect-extension-runner:23.4
+    working_dir: /extension
+    command: /bin/bash -c "poetry install && pytest --verbose --cov=connect_ext --cov-report=html --cov-report=term-missing:skip-covered"
+    volumes:
+      - .:/extension
+    env_file:
+      - .eaas_e2e_asyncmock_dev.env
