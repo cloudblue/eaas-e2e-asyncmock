@@ -15,7 +15,7 @@ import random
 import string
 
 
-class E2EExtension(Extension):
+class EaasE2eAsyncmockExtension(Extension):
 
     def get_response_by_var(self, status):
         if status == 'succeeded':
