@@ -23,7 +23,7 @@ class EaasE2eAsyncmockExtension(Extension):
         elif status == 'rescheduled':
             return ProcessingResponse.reschedule(86400)
         elif status == 'failed':
-            raise ProcessingResponse.fail(output='failed on demand')
+            return ProcessingResponse.fail(output='failed on demand')
         return ProcessingResponse.skip()
 
 
