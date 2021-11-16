@@ -9,6 +9,7 @@ from connect.eaas.extension import (
     ValidationResponse,
     ProductActionResponse,
     CustomEventResponse,
+    ScheduledExecutionResponse,
 )
 
 import random
@@ -207,3 +208,9 @@ class EaasE2eAsyncmockExtension(Extension):
             template_id = self.config['TIER_REQUEST_APPROVE_TEMPLATE_ID']
             await self.approve_tier_request(request, template_id)
         return ProcessingResponse.done()
+
+    async def execute_scheduled_processing(self, schedule):
+        self.logger.info(
+            f"Scheduled execution started: {schedule}",
+        )
+        return ScheduledExecutionResponse.done()

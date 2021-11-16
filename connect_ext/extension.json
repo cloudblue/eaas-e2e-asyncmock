@@ -20,5 +20,12 @@
     "tier_config_adjustment_request_processing": ["pending", "failed", "approved", "inquiring"],
     "tier_config_setup_request_validation": ["draft"],
     "tier_config_change_request_validation": ["draft"]
-  }
+  },
+  "schedulables": [
+    {
+      "name": "Schedulable method mock",
+      "description": "It can be used to test DevOps scheduler.",
+      "method": "execute_scheduled_processing"
+    }
+  ]
 }
