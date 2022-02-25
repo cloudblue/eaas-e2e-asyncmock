@@ -59,6 +59,13 @@ class EaasE2eAsyncmockExtension(Extension):
             )
             return self.get_response_by_var(status)
 
+        param_a = list(filter(lambda x: x['id'] == 'param_a', request['asset']['param']))
+        if param_a and param_a[0]['value'] in ('succeeded', 'rescheduled', 'failed'):
+            self.logger.info(
+                f'simulate response of type: {param_a[0]["value"]}',
+            )
+            return self.get_response_by_var(param_a[0]['value'])
+
         if request['status'] == 'pending':
             param_a = ''.join(random.choice(string.ascii_lowercase) for _ in range(10))
             param_b = ''.join(random.choice(string.ascii_lowercase) for _ in range(6))
