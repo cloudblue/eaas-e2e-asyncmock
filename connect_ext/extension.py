@@ -59,7 +59,7 @@ class EaasE2eAsyncmockExtension(Extension):
             )
             return self.get_response_by_var(status)
 
-        param_a = list(filter(lambda x: x['id'] == 'param_a', request['asset']['param']))
+        param_a = list(filter(lambda x: x['id'] == 'param_a', request['asset']['params']))
         if param_a and param_a[0]['value'] in ('succeeded', 'rescheduled', 'failed'):
             self.logger.info(
                 f'simulate response of type: {param_a[0]["value"]}',
