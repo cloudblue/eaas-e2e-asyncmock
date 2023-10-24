@@ -13,8 +13,8 @@ readme = "./README.md"
 "extension" = "connect_ext.extension:EaasE2eAsyncmockExtension"
 
 [tool.poetry.dependencies]
-python = "^3.8"
-connect-extension-runner = "^24.0"
+python = ">=3.8,<4"
+connect-eaas-core = ">=28.14,<29"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
